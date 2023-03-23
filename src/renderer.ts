@@ -28,8 +28,5 @@
 
 import './index.css';
 
-document.getElementById('move-mouse-trigger').addEventListener('click', async () => {
-    await window.mouseHandler.moveMouse()
-})
 
 

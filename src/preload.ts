@@ -11,9 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
     for (const type of ['chrome', 'node', 'electron']) {
         replaceText(`${type}-version`, process.versions[type])
     }
-})
 
-
-contextBridge.exposeInMainWorld('mouseHandler', {
-    moveMouse: () => ipcRenderer.invoke('mouse-handler:moveMouse'),
+    // to register DOM event and dispatch it to ipc event handler
+    document.getElementById('move-mouse-trigger').addEventListener('click', async () => {
+        ipcRenderer.send('mouse-handler:moveMouse')
+    })
 })
