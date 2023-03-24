@@ -1,6 +1,7 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-const { contextBridge, ipcRenderer } = require('electron')
+const { ipcRenderer } = require('electron')
+import eventNames = require('./event/eventNames')
 
 window.addEventListener('DOMContentLoaded', () => {
     const replaceText = (selector: string, text: string) => {
@@ -13,7 +14,17 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     // to register DOM event and dispatch it to ipc event handler
-    document.getElementById('move-mouse-trigger').addEventListener('click', async () => {
-        ipcRenderer.send('mouse-handler:moveMouse')
+    document.getElementById('record-btn').addEventListener('click', async (e) => {
+        const btnEl = e.target as Element
+        const shouldBtnElStart = btnEl.innerHTML.startsWith('start')
+        if (shouldBtnElStart) {
+            btnEl.innerHTML = 'stop record'
+            console.log('start')
+        }
+        else {
+            btnEl.innerHTML = 'start record'
+            console.log('end')
+        }
+        // ipcRenderer.send(eventNames.recordBtnClick)
     })
 })
