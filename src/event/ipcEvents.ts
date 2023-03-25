@@ -4,6 +4,6 @@ import recordBtnClickHandler = require('../handlers/recordBtnClick')
 
 const eventHandlerMap = new Map<string, (e: IpcMainEvent, arg: any[]) => (void)>()
 
-eventHandlerMap.set(eventNames.recordBtnClick, recordBtnClickHandler)
+eventHandlerMap.set(eventNames.recordBtnClick, recordBtnClickHandler()) // recordBtnClickHandler is a closure function.
 
 export = eventHandlerMap

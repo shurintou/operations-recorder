@@ -19,12 +19,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const shouldBtnElStart = btnEl.innerHTML.startsWith('start')
         if (shouldBtnElStart) {
             btnEl.innerHTML = 'stop record'
-            console.log('start')
         }
         else {
             btnEl.innerHTML = 'start record'
-            console.log('end')
         }
-        // ipcRenderer.send(eventNames.recordBtnClick)
+        ipcRenderer.send(eventNames.recordBtnClick)
     })
 })
