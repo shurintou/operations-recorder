@@ -1,3 +1,3 @@
 export = {
-    recordBtnCountdownTime: 3,
+    RECORD_BTN_COUNTDOWN_TIME: 3,
 }

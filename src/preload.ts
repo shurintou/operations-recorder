@@ -3,7 +3,7 @@
 const { contextBridge, ipcRenderer } = require('electron')
 import eventNames = require('./event/eventNames')
 import { IpcRendererCallBackFunction } from './types/interface'
-const { recordBtnCountdownTime } = require('./config/index')
+const { RECORD_BTN_COUNTDOWN_TIME } = require('./config/index')
 
 window.addEventListener('DOMContentLoaded', () => {
     const replaceText = (selector: string, text: string) => {
@@ -23,8 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const intervalEl = (<HTMLInputElement>document.getElementById('interval-id'))
         const countdownRemainEl = (<HTMLInputElement>document.getElementById('count-down-remain'))
         if (shouldBtnElStart) {
-            btnEl.innerHTML = recordBtnCountdownTime + 's'
-            countdownRemainEl.value = recordBtnCountdownTime
+            btnEl.innerHTML = RECORD_BTN_COUNTDOWN_TIME + 's'
+            countdownRemainEl.value = RECORD_BTN_COUNTDOWN_TIME
             const newIntervalId = window.setInterval(() => {
                 const countdownRemain = parseInt(countdownRemainEl.value)
                 if (countdownRemain > 1) {
