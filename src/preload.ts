@@ -1,7 +1,8 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-const { ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 import eventNames = require('./event/eventNames')
+import { IpcRendererCallBackFunction } from './types/interface'
 
 window.addEventListener('DOMContentLoaded', () => {
     const replaceText = (selector: string, text: string) => {
@@ -26,3 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
         ipcRenderer.send(eventNames.recordBtnClick)
     })
 })
+
+contextBridge.exposeInMainWorld(
+    'electronAPI',
+    {
+        onToggleButton: (callBack: IpcRendererCallBackFunction) => ipcRenderer.on('Alt+R', callBack)
+    }
+)

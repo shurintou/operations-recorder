@@ -1,11 +1,11 @@
 export { }
 
-interface MouseHandler {
-    moveMouse: Function
+interface ElectronAPI {
+    onToggleButton: Function
 }
 
 declare global {
     interface Window {
-        mouseHandler: MouseHandler
+        electronAPI: ElectronAPI
     }
 }

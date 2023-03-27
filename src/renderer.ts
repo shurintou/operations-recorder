@@ -25,8 +25,11 @@
  *  });
  * ```
  */
+import './index.css'
 
-import './index.css';
-
+window.electronAPI.onToggleButton((event: any, value: any) => {
+    const btnEl = document.getElementById('record-btn') as Element
+    btnEl.dispatchEvent(new Event('click', { bubbles: true, cancelable: true }))
+})
 
 

@@ -1,10 +1,10 @@
 import { mouse } from "@nut-tree/nut-js"
 
-export = (...args: any) => {
-    function recordHandler() {
+export = {
+    recordHandler: (...args: any) => {
         let isRecording: boolean = false
         let timer: NodeJS.Timer = null
-        function timerHandler() {
+        function recordHandler() {
             if (isRecording === false) {
                 isRecording = true
                 timer = setInterval(() => { mouse.getPosition().then((res: { x: number, y: number }) => console.log(res)) }, 1000)
@@ -14,7 +14,8 @@ export = (...args: any) => {
                 clearTimeout(timer)
             }
         }
-        return timerHandler
-    }
-    return recordHandler()
+        return recordHandler
+    },
+
 }
+
