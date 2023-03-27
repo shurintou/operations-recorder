@@ -1,0 +1,3 @@
+export = {
+    recordBtnCountdownTime: 3,
+}

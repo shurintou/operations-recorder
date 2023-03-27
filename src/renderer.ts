@@ -25,11 +25,11 @@
  *  });
  * ```
  */
+import './index.css'
 
-import './index.css';
-
-document.getElementById('move-mouse-trigger').addEventListener('click', async () => {
-    await window.mouseHandler.moveMouse()
+window.electronAPI.onToggleButton((event: any, value: any) => {
+    const btnEl = document.getElementById('record-btn') as Element
+    btnEl.dispatchEvent(new Event('click', { bubbles: true, cancelable: true }))
 })
 
 

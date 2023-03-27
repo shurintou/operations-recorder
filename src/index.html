@@ -4,16 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="*"><!-- set to * to use the renderer.ts -->
+  <meta http-equiv="X-Content-Security-Policy" content="*" />
   <title>Hello from Electron renderer!</title>
 </head>
 
 <body>
   <h1>Hello from Electron renderer!</h1>
   <p>👋</p>
-  <button id="move-mouse-trigger">record</button>
-  <script src="./moveMouse.js"></script>
+  <button id="record-btn" style="width:100px">start record</button>
+  <form>
+    <input id="timer-id" name="timer-id" type="hidden">
+    <input id="interval-id" name="interval-id" type="hidden">
+    <input id="count-down-remain" name="count-down-remain" , type="hidden">
+  </form>
 </body>
 
 </html>
