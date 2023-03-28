@@ -34,9 +34,13 @@ const createWindow = (): void => {
     console.log(message + " from: " + sourceId + " at line: " + line + ".")
   })
 
+  // to register ipc events
   globalShortcutRegister(mainWindow.webContents)
 
-
+  // to register ipc events
+  ipcEventHandlers.forEach((v, k) => {
+    ipcMain.on(k, v)
+  })
 }
 
 // This method will be called when Electron has finished
@@ -64,8 +68,3 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-
-// to register ipc events
-ipcEventHandlers.forEach((v, k) => {
-  ipcMain.on(k, v)
-})
