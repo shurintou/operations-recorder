@@ -1,7 +1,7 @@
 import { mouse } from "@nut-tree/nut-js"
 
 export = {
-    recordHandler: (...args: any) => {
+    recordHandler: (...args: any[]) => {
         let isRecording: boolean = false
         let timer: NodeJS.Timer = null
         function recordHandler() {
@@ -16,6 +16,8 @@ export = {
         }
         return recordHandler
     },
+
+
 
 }
 

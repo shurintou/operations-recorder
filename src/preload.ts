@@ -1,9 +1,10 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer, dialog } = require('electron')
 import eventNames = require('./event/eventNames')
 import { IpcRendererCallBackFunction } from './types/interface'
 const { RECORD_BTN_COUNTDOWN_TIME } = require('./config/index')
+
 
 window.addEventListener('DOMContentLoaded', () => {
     const replaceText = (selector: string, text: string) => {
@@ -48,6 +49,12 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
     })
+
+    document.getElementById('save-btn').addEventListener('click', () => {
+        ipcRenderer.send(eventNames.saveBtnClick)
+    })
+
+
 })
 
 contextBridge.exposeInMainWorld(
